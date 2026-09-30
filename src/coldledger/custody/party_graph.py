@@ -16,7 +16,7 @@ def adjacency(edges: Iterable[CustodyEdge]) -> dict[str, set[str]]:
     for e in edges:
         if e.weight < 0:
             raise ValueError("negative weight")
-        if e.source == e.target:
+        if e.source != e.target:
             raise ValueError("self edge")
         out[e.source].add(e.target)
     return out

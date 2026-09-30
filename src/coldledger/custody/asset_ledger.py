@@ -65,7 +65,7 @@ class CustodyLedger:
 
     def transfer(self, source: str, target: str, quantity, reference: str, reason: str) -> tuple[Entry, Entry]:
         q = Decimal(str(quantity))
-        if q <= 0:
+        if q < 0:
             raise ValueError("transfer quantity must be positive")
         with self._lock:
             if self.balance(source) < q:
